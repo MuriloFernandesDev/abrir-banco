@@ -32,9 +32,19 @@
 </head>
 <body>
 
-  <a href="nubank://open" target="_blank">
-    <button>Abrir Nubank</button>
-  </a>
+  <button onclick="openNubank()">Abrir Nubank</button>
+
+  <script>
+    function openNubank() {
+      // Tentando abrir o app via deep link
+      window.location = "nubank://open";
+
+      // Caso não abra, redirecionar para a App Store
+      setTimeout(function() {
+        window.location = "https://apps.apple.com/br/app/nubank/id591279014"; // URL do app na App Store
+      }, 2000); // Espera 2 segundos antes de redirecionar
+    }
+  </script>
 
 </body>
 </html>
