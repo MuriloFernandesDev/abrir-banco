@@ -36,13 +36,14 @@
 
   <script>
     function openNubank() {
-      // Tentando abrir o app via deep link
+      // Tenta abrir o app com o deep link
       window.location = "nubank://open";
 
-      // Caso não abra, redirecionar para a App Store
+      // Após 1 segundo, verifica se o app foi aberto. Se não, redireciona para a App Store
       setTimeout(function() {
-        window.location = "https://apps.apple.com/br/app/nubank/id591279014"; // URL do app na App Store
-      }, 2000); // Espera 2 segundos antes de redirecionar
+        // Redireciona para a App Store
+        window.location = "https://apps.apple.com/br/app/nubank/id591279014";
+      }, 1000); // Espera 1 segundo para o deep link
     }
   </script>
 
