@@ -36,14 +36,19 @@
 
   <script>
     function openNubank() {
-      // Tenta abrir o app com o deep link
-      window.location = "nubank://open";
+      var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-      // Após 1 segundo, verifica se o app foi aberto. Se não, redireciona para a App Store
-      setTimeout(function() {
-        // Redireciona para a App Store
-        window.location = "https://apps.apple.com/br/app/nubank/id591279014";
-      }, 1000); // Espera 1 segundo para o deep link
+      // Verifica se o dispositivo é iOS
+      if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        window.location.href = "https://apps.apple.com/br/app/nubank-conta-cart%C3%A3o-e-mais/id814456780"; // App Store (iOS)
+      }
+      // Verifica se o dispositivo é Android
+      else if (/android/i.test(userAgent)) {
+        window.location.href = "https://play.google.com/store/apps/details?id=com.nu.production&hl=pt_BR"; // Google Play (Android)
+      }
+      else {
+        alert("Este link é somente para dispositivos móveis.");
+      }
     }
   </script>
 
